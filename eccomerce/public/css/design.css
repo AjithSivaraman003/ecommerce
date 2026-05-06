@@ -1,0 +1,30 @@
+.navbar{
+    background-color: aqua;
+}
+.vintage-logo{
+    font-size: large ;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+}
+
+
+.bg-grid {
+  background-image: url("../storage/head1.jpg");
+  background-size: cover;
+  background-position: center;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+   min-height: 90vh;
+   
+}
+
+
+.htext h2{
+    color: rgb(0, 0, 0);
+    font-size: 100px;
+    font-weight: 700;
+}
+
+.htext p{
+    font-size: 20px;
+}
