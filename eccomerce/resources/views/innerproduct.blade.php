@@ -50,7 +50,7 @@
     </head>
 <body>
 
-<section class="container sproduct my-5 pt-5">
+<!-- <section class="container sproduct my-5 pt-5">
 <div class="row mt-5">
     <div class="col-lg-5 col-md-12 col-12">
         <img class="img-fluid w-100 pb-1" src="{{ asset('storage/innerpro-img/shirt1.jpg') }}" id="MainImg" alt="">
@@ -80,7 +80,7 @@
             <option >select size</option>
             <option >XL</option>
             <option >Medium</option>
-            <option >Ssmall</option>
+            <option >Small</option>
             <input type="number" value="1">
             <button class="buy-btn">Add to cart</button>
             <h4 class="mt-5 mb-5">Product Details </h4>
@@ -91,6 +91,76 @@
 
         </select>
     </div>
+
+    
+</div>
+
+</section> -->
+
+
+<section class="container sproduct my-5 pt-5">
+
+<div class="row mt-5">
+
+    <!-- Product Image -->
+    <div class="col-lg-5 col-md-12 col-12">
+
+        <img class="img-fluid w-100 pb-1"
+             src="{{ asset('storage/products-images/' . $product->image) }}"
+             id="MainImg"
+             alt="">
+
+        
+
+    </div>
+
+
+    <!-- Product Details -->
+    <div class="col-lg-6 col-md-12 col-12">
+
+        <h6>
+            Home / {{ $product->category }}
+        </h6>
+
+        <h3 class="my-3">
+            {{ $product->title }}
+        </h3>
+
+        <h2>
+            ${{ $product->price }}
+        </h2>
+
+        <select class="my-3 form-select w-50">
+
+            <option>Select Size</option>
+
+            <option>
+                <!-- {{ $product->size }} -->
+                <option >XL</option>
+            <option >Medium</option>
+            <option >Small</option>
+            </option>
+
+        </select>
+
+        <input type="number"
+               value="1"
+               class="form-control w-25 mb-3">
+
+        <button class="buy-btn btn btn-primary">
+            Add to cart
+        </button>
+
+        <h4 class="mt-5 mb-3">
+            Product Details
+        </h4>
+
+        <span>
+            {{ $product->description }}
+        </span>
+
+    </div>
+
 </div>
 
 </section>

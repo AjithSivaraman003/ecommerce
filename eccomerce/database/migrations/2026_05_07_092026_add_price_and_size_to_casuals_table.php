@@ -9,8 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-   public function up(): void
+    public function up(): void
 {
     Schema::create('casuals', function (Blueprint $table) {
 
@@ -30,27 +29,21 @@ return new class extends Migration
 
         $table->integer('order')->default(0);
 
-        $table->text('description')->nullable();
-        
         $table->boolean('status')->default(1);
 
         $table->timestamps();
     });
 }
-
-
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-    Schema::table('casuals', function (Blueprint $table) {
+        Schema::table('casuals', function (Blueprint $table) {
 
-        $table->dropColumn('price');
+              $table->decimal('price', 10, 2)->default(0);
 
-        $table->dropColumn('size');
-
-    });
-}
+        $table->string('size')->nullable();
+        });
+    }
 };

@@ -8,12 +8,23 @@ use App\Models\Casual;
 class ProductController extends Controller
 {
     // Show Products
-    public function index()
-    {
-        $products = Casual::all();
+ 
 
-        return view('productpage', compact('products'));
+    public function index(Request $request)
+{
+    $products = Casual::query();
+
+    // Category Filter
+    if($request->category)
+    {
+        $products->where('category', $request->category);
     }
+
+    $products = $products->get();
+
+    return view('productpage', compact('products'));
+}
+
 
     // Store Product
     public function store(Request $request)
@@ -28,13 +39,16 @@ class ProductController extends Controller
         );
 
         // Save Data
-        Casual::create([
-            'image' => $imageName,
-            'title' => $request->title,
-            'category' => $request->category,
-            'order' => $request->order,
-            'status' => $request->status,
-        ]);
+       Casual::create([
+    'image' => $imageName,
+    'title' => $request->title,
+    'category' => $request->category,
+    'price' => $request->price,
+    'description' => $request->description,
+    'size' => $request->size,
+    'order' => $request->order,
+    'status' => $request->status,
+]);
 
         return back()->with('success', 'Product Added Successfully');
     }
@@ -91,11 +105,22 @@ public function update(Request $request, $id)
     $product->title = $request->title;
     $product->category = $request->category;
     $product->order = $request->order;
+    $product->description = $request->description;
     $product->status = $request->status;
+    $product->price = $request->price;
+    $product->size = $request->size;
 
     $product->save();
 
     return redirect('/dash-product');
 }
+
+public function show($id)
+{
+    $product = Casual::findOrFail($id);
+
+    return view('innerproduct', compact('product'));
+}
+
 
 }

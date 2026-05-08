@@ -112,11 +112,11 @@
     <img src="{{ asset('storage/home-image/dress2.jpg') }}" class="img-fluid mb-3" style="max-width:80%;" alt="">
      <h4 class="mb-3">$ 100</h4><br>
 
-    <button type="submit" class="btn text-white btn-primary w-25">
-      <a href="{{ url('/productpage') }}">
-   Submit
-</a>
-    </button>
+  
+    <a href="{{ url('/productpage?category=Dress') }}"
+   class="btn btn-primary text-white w-25 text-decoration-none">
+   View More
+  </a>
 
   </div>
 </div>
@@ -139,11 +139,10 @@
     <img src="{{ asset('storage/products-images/dress4.jpg') }}" class="img-fluid mb-3" style="max-width:80%;" alt="">
      <h4 class="mb-3">$ 1000</h4><br>
 
-   <button type="submit" class="btn text-white btn-primary w-25">
-      <a href="{{ url('/productpage') }}">
-   Submit
-</a>
-    </button>
+   <a href="{{ url('/productpage?category=shoes') }}"
+   class="btn btn-primary text-white w-25 text-decoration-none">
+   View More
+  </a>
 
   </div>
 </div>

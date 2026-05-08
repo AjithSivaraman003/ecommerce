@@ -8,13 +8,16 @@ use App\Models\Casual;
 
 class Casual extends Model
 {
-   protected $fillable = [
-        'image',
-        'title',
-        'category',
-        'order',
-        'status'
-    ];
+    protected $fillable = [
+    'image',
+    'title',
+    'category',
+    'price',
+    'size',
+    'description',
+    'order',
+    'status'
+];
 
 // public function store(Request $request)
 // {

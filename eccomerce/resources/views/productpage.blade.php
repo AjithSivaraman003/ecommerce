@@ -51,11 +51,31 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Accordion Item #1
+        Select catogery
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, This is the first item's accordion body.</div>
+   <div class="accordion-body">
+
+  <li>
+    <a href="{{ url('/productpage') }}">
+        All Products
+    </a>
+</li>
+
+<li>
+    <a href="{{ url('/productpage?category=Dress') }}">
+        Dress
+    </a>
+</li>
+
+<li>
+    <a href="{{ url('/productpage?category=Shoes') }}">
+        Shoes
+    </a>
+</li>
+
+</div>
     </div>
   </div>
   <div class="accordion-item">
@@ -100,20 +120,50 @@
         </div> -->
 
 
- @foreach($products as $product)
-        <div class="col-md-4 mb-4 ">
-          <div class="card h-100">
-            <img src="{{ asset('storage/products-images/' . $product->image) }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{ $product->title }}</h5>
-              <p class="card-text">{{ $product->category }}</p>
-              
-            </div>
-          </div>
-        </div> 
+<div class="container mt-5">
+
+    <div class="row">
+@foreach($products as $product)
+
+<div class="col-md-4 mb-4">
+
+    <div class="card h-100">
+        <a href="{{ url('/innerproduct/' . $product->id) }}">
+        <img src="{{ asset('storage/products-images/' . $product->image) }}"
+             class="card-img-top product-image"
+             alt="...">
+        </a>
+
+        
+        <div class="card-body">
+
+            <h5 class="card-title">
+                {{ $product->title }}
+            </h5>
+
+            <p class="card-text">
+                {{ $product->category }}
+            </p>
+
+          <div><button><a href="{{ url('/innerproduct/' . $product->id) }}"
+   class="btn ">
+
+    View Product
+
+</a></button>
+
+
+</div>
+
+        </div>
+
+    </div>
+
+</div>
 
 @endforeach
-
+</div>
+</div>
 
 
 

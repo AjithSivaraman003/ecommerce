@@ -1,3 +1,7 @@
+
+
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 <div class="container mt-5">
 
 <form action="{{ url('/product-update/' . $product->id) }}"
@@ -33,6 +37,33 @@
                value="{{ $product->order }}"
                class="form-control">
     </div>
+
+
+     <div class="mb-3">
+        <label>Price</label>
+        <input type="number"
+               name="price"
+               value="{{ $product->price }}"
+               class="form-control">
+    </div>
+
+     <div class="mb-3">
+        <label>Size</label>
+        <input type="text" placeholder="small / medium / large"
+               name="size"
+               value="{{ $product->size }}"
+               class="form-control">
+    </div>
+
+    
+     <div class="mb-3">
+        <label>Discription</label>
+        <input type="text"
+               name="description"
+               value="{{ $product->description }}"
+               class="form-control">
+    </div>
+
 
     <!-- Status -->
     <div class="mb-3">

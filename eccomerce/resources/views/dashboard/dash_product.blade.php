@@ -76,8 +76,10 @@
    <p class="bg-secondary text-white">Dashboard / Product list</p>
   </div>
 
-<div class="d-flex justify-content-end">
-    <button class="btn btn-primary">Add Product +</button>
+<div class="d-flex justify-content-end ">
+    
+     <a href="/product-add" class="btn btn-primary text-white"> Add Product +</a>
+     
 </div>
 
 
@@ -90,6 +92,8 @@
       <th scope="col">Title</th>
       <th scope="col">Category</th>
       <th scope="col">Order</th>
+      <th scope="col">Price</th>
+      <th scope="col">>Description</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
@@ -115,6 +119,10 @@
       <td>{{ $product->category }}</td>
 
       <td>{{ $product->order }}</td>
+
+      <td>{{ $product->price }}</td>
+      
+      <td>{{ $product->description }}</td>
 
       <td>
         {{ $product->status == 1 ? 'Active' : 'Inactive' }}

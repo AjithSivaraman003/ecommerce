@@ -11,14 +11,9 @@ Route::get('/', function () {
 
 Route::get('/home', function () {return view('home');});
 // Route::get('/productpage', function () {return view('productpage');});
-Route::get('/innerproduct', function () {return view('innerproduct');});
 
-// Route::get('/productpage', function () {
 
-//     $products = Casual::all();
 
-//     return view('productpage', compact('products'));
-// });
 Route::get('/productpage', [ProductController::class, 'index']);
 Route::get('/product-add', [ProductController::class, 'create']);
 
@@ -33,3 +28,8 @@ Route::put('/product-update/{id}',[ProductController::class, 'update']);
 
 
 Route::get('/product-edit/{id}',[ProductController::class, 'edit']);
+
+//innerproduct
+Route::get('/innerproduct', function () {return view('innerproduct');});
+
+Route::get('/innerproduct/{id}', [ProductController::class, 'show']);

@@ -105,8 +105,13 @@
 
       <!-- Discount Price -->
       <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Discount Price</label>
-        <input type="number" name="discount_price" value="0" class="form-control">
+        <label class="form-label">Size</label>
+        <select name="size" class="form-select">
+          <option selected>Select size</option>
+          <option>Small</option>
+          <option>Medium</option>
+           <option>Large</option>
+        </select>
       </div>
 
       <!-- Stock -->
