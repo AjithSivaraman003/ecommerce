@@ -99,7 +99,9 @@
 
 
 <section class="container sproduct my-5 pt-5">
+<form action="{{ url('/cart/store') }}" method="POST">
 
+    @csrf
 <div class="row mt-5">
 
     <!-- Product Image -->
@@ -144,10 +146,11 @@
         </select>
 
         <input type="number"
+                 name="quantity"
                value="1"
                class="form-control w-25 mb-3">
 
-        <button class="buy-btn btn btn-primary">
+        <button  type="submit" class="buy-btn btn btn-primary">
             Add to cart
         </button>
 
@@ -162,6 +165,7 @@
     </div>
 
 </div>
+</form>
 
 </section>
 

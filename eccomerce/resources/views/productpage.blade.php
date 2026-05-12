@@ -44,10 +44,24 @@
 <div class="container text-center  mt-4"> 
   <div class="row">
 
+  <div class="container mt-4">
+
+  
+
+</div>
+
     <!-- Left Sidebar accrodin /list items -->
     <div class=" col-3 w-25 d-none d-sm-block box1 g-0">
 
   <div class="accordion accordion-flush pt-2" id="accordionFlushExample">
+
+ @if(Auth::check())
+    <div class="d-flex align-items-center gap-3">
+        <h6 class="mb-0">Welcome, {{ Auth::user()->name }}</h6>
+        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
+    </div>
+@endif
+
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">

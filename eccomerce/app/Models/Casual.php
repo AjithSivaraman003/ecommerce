@@ -19,6 +19,12 @@ class Casual extends Model
     'status'
 ];
 
+public function carts()
+{
+    return $this->hasMany(Cart::class, 'product_id');
+}
+
+
 // public function store(Request $request)
 // {
 //     $imageName = time().'.'.$request->image->extension();

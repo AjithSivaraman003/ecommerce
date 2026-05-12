@@ -50,7 +50,7 @@
   
   <i class="fa-solid fa-cart-arrow-down fa-2x" style="color:rgb(27, 27, 27);"></i>
 
-  <a href="#signup" 
+  <a href="/login" 
      class="text-white text-decoration-none px-4 py-2 bg-primary rounded-pill">
      Login / Signup
   </a>

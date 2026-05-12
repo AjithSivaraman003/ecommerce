@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Casual;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view ('welcome');
 });
 
 Route::get('/home', function () {return view('home');});
@@ -33,3 +35,30 @@ Route::get('/product-edit/{id}',[ProductController::class, 'edit']);
 Route::get('/innerproduct', function () {return view('innerproduct');});
 
 Route::get('/innerproduct/{id}', [ProductController::class, 'show']);
+
+Route::get('cart', function () {
+    return view ('cart');
+});
+
+//regester and login session
+
+Route::post('/register-save',
+    [AuthController::class, 'register']);
+
+ Route::get('/register', function () {
+
+    return view('register');
+
+});
+
+Route::get('/login', function () {
+
+    return view('loginpage');
+
+});
+
+Route::post('/login-check',
+    [AuthController::class, 'login']);
+
+Route::get('/logout',
+    [AuthController::class, 'logout']);

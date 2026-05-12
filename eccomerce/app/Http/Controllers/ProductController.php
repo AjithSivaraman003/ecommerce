@@ -122,5 +122,9 @@ public function show($id)
     return view('innerproduct', compact('product'));
 }
 
+public function product()
+{
+    return $this->belongsTo(Casual::class, 'product_id');
+}
 
 }

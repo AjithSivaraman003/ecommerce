@@ -6,44 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('casuals', function (Blueprint $table) {
+    {
+        Schema::table('casuals', function (Blueprint $table) {
 
-        $table->id();
+            // Add only if columns do not exist
+            if (!Schema::hasColumn('casuals', 'price')) {
+                $table->decimal('price', 10, 2)->default(0);
+            }
 
-        $table->string('image');
+            if (!Schema::hasColumn('casuals', 'size')) {
+                $table->string('size')->nullable();
+            }
 
-        $table->string('title');
+        });
+    }
 
-        $table->string('category');
-
-        // Price
-        $table->decimal('price', 10, 2)->default(0);
-
-        // Product Size
-        $table->string('size')->nullable();
-
-        $table->integer('order')->default(0);
-
-        $table->boolean('status')->default(1);
-
-        $table->timestamps();
-    });
-}
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('casuals', function (Blueprint $table) {
 
-              $table->decimal('price', 10, 2)->default(0);
+            if (Schema::hasColumn('casuals', 'price')) {
+                $table->dropColumn('price');
+            }
 
-        $table->string('size')->nullable();
+            if (Schema::hasColumn('casuals', 'size')) {
+                $table->dropColumn('size');
+            }
+
         });
     }
 };
