@@ -40,6 +40,33 @@ Route::get('cart', function () {
     return view ('cart');
 });
 
+
+//cart session 
+
+Route::post('/cart/store',
+    [CartController::class, 'store']);
+
+Route::get('/cart',
+    [CartController::class, 'index']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //regester and login session
 
 Route::post('/register-save',

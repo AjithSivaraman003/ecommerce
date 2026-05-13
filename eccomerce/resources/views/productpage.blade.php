@@ -59,13 +59,13 @@
     <div class="d-flex align-items-center gap-3">
         <h6 class="mb-0">Welcome, {{ Auth::user()->name }}</h6>
         <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
-    </div>
+    </div> <br>
 @endif
 
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Select catogery
+        Select Product catogery
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -92,14 +92,27 @@
 </div>
     </div>
   </div>
+  
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Accordion Item #2
+        Home
       </button>
     </h2>
     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, whi. content.</div>
+      <div class="accordion-body">
+        <li>
+    <a href="{{ url('/home') }}">
+        Home
+    </a>
+</li>
+
+<li>
+    <a href="{{ url('/cart') }}">
+        Cart
+    </a>
+</li>
+     </div>
     </div>
   </div>
   <div class="accordion-item">

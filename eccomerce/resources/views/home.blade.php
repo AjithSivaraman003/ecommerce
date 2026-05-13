@@ -36,13 +36,13 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link " href="#">About</a>
+            <a class="nav-link " href="/cart">Cart</a>
           </li>
            <li class="nav-item mx-2">
             <a class="nav-link" href="#">Service</a>
           </li>
            <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Product</a>
+            <a class="nav-link" href="/productpage">Product</a>
           </li>
           </ul>
           <!--login-->

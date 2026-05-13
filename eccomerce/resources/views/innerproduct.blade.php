@@ -145,6 +145,11 @@
 
         </select>
 
+         <input type="hidden"
+           name="product_id"
+           value="{{ $product->id }}">
+
+           
         <input type="number"
                  name="quantity"
                value="1"

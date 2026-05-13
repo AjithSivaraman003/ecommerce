@@ -6,109 +6,93 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
 <section class="container py-5">
 
-    <div class="cart-wrapper p-4">
+    <div class="cart-wrapper">
 
-        <!-- TITLE -->
-        <h1 class="mb-4 fw-bold">
-            Cart
-        </h1>
+        <!-- TOP -->
+        <div class="d-flex justify-content-between align-items-center mb-5 flex-wrap">
 
-        <!-- STEPS -->
-        <div class="d-flex align-items-center gap-3 mb-5 flex-wrap">
+            <div>
+                <h1 class="fw-bold mb-2">
+                    Shopping Cart
+                </h1>
 
-            <span class="fw-bold">1. Cart</span>
+                <p class="text-muted">
+                    Manage your selected products
+                </p>
+            </div>
 
-            <div class="line"></div>
+            <a href="/productpage"
+               class="btn btn-outline-dark rounded-pill px-4">
 
-            <span>2. Checkout</span>
+                ← Continue Shopping
 
-            <div class="line"></div>
-
-            <span>3. Payment</span>
+            </a>
 
         </div>
 
 
+        <div class="row">
 
-        <div class="row g-5">
-
-            <!-- LEFT -->
+            <!-- LEFT SIDE -->
             <div class="col-lg-8">
 
-                <!-- ITEM -->
-                <div class="cart-item">
+                @foreach($carts as $cart)
+
+                <div class="cart-card mb-4">
 
                     <div class="row align-items-center">
 
                         <!-- IMAGE -->
                         <div class="col-md-3 text-center">
 
-                            <img src="{{ asset('storage/products-images/dress4.jpg') }}"
+                            <img src="{{ asset('storage/products-images/' . $cart->image) }}"
                                  class="product-img">
 
                         </div>
 
 
                         <!-- DETAILS -->
-                        <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="col-md-5 mt-4 mt-md-0">
 
                             <h4 class="fw-bold">
-                                Slim Fit Casual Shirt
+                                {{ $cart->title }}
                             </h4>
 
-                            <p class="text-muted mb-2">
-                                Premium casual shirt for men.
+                            <p class="text-muted small mb-2">
+                                {{ $cart->description }}
                             </p>
 
-                            <p>
-                                Size <strong>XL</strong>
-                                
+                            <p class="mb-2">
+                                Size:
+                                <strong>{{ $cart->size }}</strong>
                             </p>
 
-                            <div class="d-flex align-items-center gap-2">
-
-                                <h3 class="fw-bold mb-0">
-                                    $85
-                                </h3>
-
-                                <!-- <del class="text-muted">
-                                    $92
-                                </del> -->
-
-                            </div>
+                            <h5 class="fw-bold text-dark">
+                                ${{ $cart->price }}
+                            </h5>
 
                         </div>
 
 
-                        <!-- ACTIONS -->
-                        <div class="col-md-3 text-md-end mt-4 mt-md-0">
+                        <!-- QTY -->
+                        <div class="col-md-2 mt-4 mt-md-0 text-center">
 
-                            <!-- QTY -->
-                            <div class="d-flex justify-content-md-end align-items-center gap-2 mb-4">
+                            <p class="fw-bold mb-2">
+                                Qty
+                            </p>
+
+                            <div class="qty-box">
 
                                 <button class="qty-btn">-</button>
 
                                 <input type="text"
-                                       value="1"
+                                       value="{{ $cart->quantity }}"
                                        class="qty-input">
 
                                 <button class="qty-btn">+</button>
 
                             </div>
-
-
-                            <!-- ICONS -->
-                            <div class="d-flex justify-content-md-end gap-2">
-
-                                <button class="icon-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                                <button class="icon-btn">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                            </div>
+                           
 
                         </div>
 
@@ -116,142 +100,69 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 
                 </div>
 
-
-
-                <!-- SECOND ITEM -->
-                <div class="cart-item">
-
-                    <div class="row align-items-center">
-
-                        <div class="col-md-3 text-center">
-
-                            <img src="{{ asset('storage/products-images/sales2.jpg') }}"
-                                 class="product-img">
-
-                        </div>
-
-
-                        <div class="col-md-6 mt-4 mt-md-0">
-
-                            <h4 class="fw-bold">
-                                Printed Straight Kurtas
-                            </h4>
-
-                            <p class="text-muted mb-2">
-                                Stylish modern fashion collection.
-                            </p>
-
-                            <p>
-                                Size <strong>M</strong>
-                               
-                            </p>
-
-                            <div class="d-flex align-items-center gap-2">
-
-                                <h3 class="fw-bold mb-0">
-                                    $68
-                                </h3>
-
-                               
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-md-3 text-md-end mt-4 mt-md-0">
-
-                            <div class="d-flex justify-content-md-end align-items-center gap-2 mb-4">
-
-                                <button class="qty-btn">-</button>
-
-                                <input type="text"
-                                       value="2"
-                                       class="qty-input">
-
-                                <button class="qty-btn">+</button>
-
-                            </div>
-
-                            <div class="d-flex justify-content-md-end gap-2">
-
-                                <button class="icon-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                                <button class="icon-btn">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                @endforeach
 
             </div>
 
 
-
-            <!-- RIGHT -->
+            <!-- RIGHT SIDE -->
             <div class="col-lg-4">
 
-                <div class="summary-box">
+                <div class="summary-card">
 
-                    <h4 class="fw-bold mb-4">
+                    <h3 class="fw-bold mb-4">
                         Order Summary
-                    </h4>
+                    </h3>
 
-                    <div class="summary-row">
-                        <span>Sub Total</span>
-                        <strong>$239.00</strong>
+                    <div class="d-flex justify-content-between mb-3">
+
+                        <span>Items Total</span>
+
+                        <strong>
+                            ${{ $grandTotal }}
+                        </strong>
+
                     </div>
 
-                    <div class="summary-row">
-                        <span>Discount</span>
-                        <strong>$35.52</strong>
-                    </div>
+                    <div class="d-flex justify-content-between mb-3">
 
-                    <div class="summary-row">
-                        <span>Tax</span>
-                        <strong>$0.00</strong>
-                    </div>
-
-                    <div class="summary-row">
                         <span>Shipping</span>
-                        <strong class="text-warning">
+
+                        <strong class="text-success">
                             Free
                         </strong>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+
+                        <span>Tax</span>
+
+                        <strong>
+                            $0
+                        </strong>
+
                     </div>
 
                     <hr>
 
-                    <div class="summary-row fw-bold">
-                        <span>Total</span>
-                        <strong>$606.48</strong>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <h4 class="fw-bold">
+                            Grand Total
+                        </h4>
+
+                        <h4 class="fw-bold text-primary">
+                            ${{ $grandTotal }}
+                        </h4>
+
                     </div>
 
-                    <button class="checkout-btn">
-                        Proceed to Checkout
+                    <button class="checkout-btn w-100">
+
+                        Proceed To Checkout
+
                     </button>
-
-                    <hr>
-
-                    <p class="text-center text-muted small">
-                        Estimated Delivery by
-                        <strong>25 April, 2025</strong>
-                    </p>
-
-                </div>
-
-
-
-                <!-- COUPON -->
-                <div class="coupon-box mt-4">
-
-                   
 
                 </div>
 
@@ -268,83 +179,103 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
 <style>
 
 body{
-    background:#f7f4ef;
+    background: #f5f5f5;
 }
 
+
+/* WRAPPER */
 .cart-wrapper{
-    background:#fff;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-.line{
-    width:70px;
-    height:1px;
-    background:#ccc;
+
+/* PRODUCT CARD */
+.cart-card{
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
 }
 
-.cart-item{
-    border-bottom:1px solid #eee;
-    padding:25px 0;
-}
 
+/* IMAGE */
 .product-img{
-    width:120px;
-    height:140px;
-    object-fit:cover;
-    border-radius:15px;
+    width: 140px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+/* QUANTITY */
+.qty-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .qty-btn{
-    width:35px;
-    height:35px;
-    border:none;
-    background:#f2f2f2;
-    border-radius:8px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: #f8f8f8;
+    color: #000000;
+    border-radius: 50%;
+    font-size: 18px;
 }
 
 .qty-input{
-    width:45px;
-    height:35px;
-    text-align:center;
-    border:1px solid #ddd;
-    border-radius:8px;
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    height: 35px;
 }
 
-.icon-btn{
-    width:38px;
-    height:38px;
-    border:1px solid #ddd;
-    background:#fff;
-    border-radius:8px;
+
+/* SUMMARY */
+.summary-card{
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 30px;
 }
 
-.summary-box{
-    background:#faf7f2;
-    padding:30px;
-    border-radius:20px;
-}
 
-.summary-row{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:18px;
-}
-
+/* CHECKOUT BUTTON */
 .checkout-btn{
-    width:100%;
-    background:#111;
-    color:#fff;
-    border:none;
-    padding:14px;
-    border-radius:40px;
-    margin-top:20px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 15px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.coupon-box{
-    background:#faf7f2;
-    padding:25px;
-    border-radius:20px;
+.checkout-btn:hover{
+    background: #333;
+}
+
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .cart-wrapper{
+        padding: 20px;
+    }
+
+    .product-img{
+        width: 100px;
+        height: 120px;
+    }
+
 }
 
 </style>
