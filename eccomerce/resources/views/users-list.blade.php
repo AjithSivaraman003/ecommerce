@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Product add</title>
+    <title>Dashboard Product</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css">
     
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
 </head>
 <body>
@@ -59,6 +59,7 @@
                 <span class="description">Gallery List</span>
             </a>
            -->
+            
             </div>
             <!---------->
             <a class="nav-link" href="#">
@@ -75,124 +76,121 @@
    
    <main class="main-content">
   <div class="container">
-     <h3>Product Add</h3><hr>
-   <p class="bg-secondary text-white">Dashboard / Product Add</p>
+     <h3>User List</h3><hr>
+   <p class="bg-secondary text-white">Dashboard / User list</p>
   </div>
-<div class="container p-3">
 
- <form action="{{ route('products.store') }}"
-      method="POST"
-      enctype="multipart/form-data">
+<div class="d-flex justify-content-end ">
+    
+     <a href="/register" class="btn btn-primary text-white"> Add user +</a>
+     
+</div>
 
-    @csrf
 
-    <div class="row">
 
-      <!-- Title -->
-      <div class="col-12 mb-3">
-        <label class="form-label">Title</label>
-        <input type="text" name="title" class="form-control">
-      </div>
+    <!-- TABLE -->
+    <div class="card shadow border-0 rounded-4">
 
-      <!-- Description -->
-      <div class="col-12 mb-3">
-        <label class="form-label">Description</label>
-        <textarea name="description" class="form-control" rows="3"></textarea>
-      </div>
+        <div class="card-body">
 
-      <!-- Price -->
-      <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Price</label>
-        <input type="number" name="price" value="0" class="form-control">
-      </div>
+            <table class="table table-hover align-middle">
 
-      <!-- Discount Price -->
-      <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Size</label>
-        <select name="size" class="form-select">
-          <option selected>Select size</option>
-          <option>Small</option>
-          <option>Medium</option>
-           <option>Large</option>
-        </select>
-      </div>
+                <thead class="table">
 
-      <!-- Stock -->
-      <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Stock Quantity</label>
-        <input type="number" name="stock" value="0" class="form-control">
-      </div>
+                    <tr>
 
-      <!-- Category -->
-      <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Category</label>
-        <select name="category" class="form-select">
-          <option selected>Select Category</option>
-          <option>Dress</option>
-          <option>Shoes</option>
-        </select>
-      </div>
+                        <th>#</th>
 
-      <!-- Order -->
-      <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Order</label>
-        <input type="number" name="order" value="0" class="form-control">
-      </div>
+                        <th>Name</th>
 
-      <!-- Status -->
-      <div class="col-12 col-md-4 mb-3">
-        <label class="form-label">Status</label>
-        <select name="status" class="form-select">
-          <option value="1">Active</option>
-          <option value="0">Inactive</option>
-        </select>
-      </div>
+                        <th>Email</th>
 
-      <!-- Image -->
-      <div class="col-12 mb-3">
-        <label class="form-label">Image</label>
-        <input class="form-control" type="file" name="image">
-      </div>
+                        <th>Address</th>
 
-      <!-- Buttons -->
-      <div>
-        <button type="submit" class="btn btn-primary">
-          Save
-        </button>
+                        <th width="180">
+                            Action
+                        </th>
 
-        <a href="/" class="btn btn-secondary">
-          Back
-        </a>
-      </div>
+                    </tr>
 
- 
+                </thead>
 
+                <tbody>
+
+                    @foreach($users as $user)
+
+                    <tr>
+
+                        <td>
+                            {{ $loop->iteration }}
+                        </td>
+
+                        <td class="fw-bold">
+                            {{ $user->name }}
+                        </td>
+
+                        <td>
+                            {{ $user->email }}
+                        </td>
+
+                        <td>
+                            {{ $user->address }}
+                        </td>
+
+                        <td>
+
+                            <!-- EDIT -->
+                            <!-- <a href="{{ url('/user-edit/' . $user->id) }}"
+                               class="btn btn-sm btn-primary">
+
+                                <i class="bi bi-pencil-square"></i>
+
+                                Edit
+
+                            </a> -->
+
+
+                            <!-- DELETE -->
+                            <a href="{{ url('/user-delete/' . $user->id) }}"
+                               class="btn btn-sm btn-danger"
+                               onclick="return confirm('Delete this user?')">
+
+                                <i class="bi bi-trash"></i>
+
+                                Delete
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    @endforeach
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 
-  </form>
-
 </div>
-  
 
-  </div>
-</div>
+</main>
+
+
+
 <script>
-
 function logout() {
 
     // Redirect to login page
     window.location.href = "/admin";
 
 }
-
 </script>
 
 
-
-
-
-</main>
 
 
 

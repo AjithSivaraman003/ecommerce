@@ -19,9 +19,8 @@
     
     <!-- LEFT SIDE IMAGE -->
     <div class="col-md-6 p-0 d-none d-md-block ">
-       
       <img 
-         src="{{ asset('storage/regpageimage.jpg') }}" 
+        src="{{ asset('storage/ecomside.jpg') }}" 
         alt="Image" 
         class="img-fluid w-100 h-100 object-fit-cover"
       >
@@ -31,36 +30,31 @@
     <div class="col-md-6 d-flex align-items-center justify-content-center ">
       <div class="w-75">
         <img src="{{ asset('storage/logo.jpg') }}" alt="Logo" class="img-fluid d-block mx-auto" style="max-height:60px;">
-        <h3 class="mb-4 text-center text-primary">Login</h3>
+        <h3 class="mb-4 text-center text-primary">Admin Login</h3>
 
-        <form action="{{ url('/login-check') }}" method="POST">
+        <form>
           <div class="mb-3">
-            <label class="form-label">Email address</label>
-            <input type="email" name="email" class="form-control">
+            <label class="form-label">Username</label>
+            <input type="text" id="username" placeholder="admin" class="form-control">
              </div>
 
           <div class="mb-3">
             <label class="form-label">Password</label>
-            <input type="password" name="password" placeholder="12345" class="form-control">
+            <input type="password" id="password" placeholder="admin" class="form-control">
           </div>
-<br>
-     
 
-<div class="d-grid gap-3">
+          <!-- <div class="mb-3 form-check">
+  <input type="checkbox" class="form-check-input">
+  <label class="form-check-label">Check me out</label>
+</div> -->
 
-    <button type="submit" class="btn btn-primary w-100">
-        Log in
-    </button>
+<div class="d-flex justify-content-between ">
+  <button class="w-100 btn-primary" type="button" onclick="login()">Login</button>
 
-    <a href="/register" class="btn btn-outline-primary w-100">
-        Create Account
-    </a>
-
-    <a href="/home" class="btn btn-outline-secondary w-100">
+</div><br>
+ <a href="/home" class="btn btn-outline-secondary w-100">
         Home
     </a>
-
-</div>
 
 
           
@@ -71,6 +65,27 @@
   </div>
 </div>
 
+<script>
+
+function login() {
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    // Check username and password are same
+    if(username === password && username !== "") {
+
+        // Open home page
+        window.location.href = "/dash-product";
+
+    } else {
+
+        alert("Username and Password must be same");
+
+    }
+}
+
+</script>
 
 
 </body>

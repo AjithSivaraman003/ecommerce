@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Casual;
+use App\Models\User;
+use App\Models\Cart;
 
 class ProductController extends Controller
 {
@@ -126,5 +128,23 @@ public function product()
 {
     return $this->belongsTo(Casual::class, 'product_id');
 }
+
+
+public function users()
+{
+    $users = User::all();
+
+    return view('users-list',
+        compact('users'));
+}
+
+public function deleteUser($id)
+{
+    User::find($id)->delete();
+
+    return redirect()->back();
+}
+
+
 
 }

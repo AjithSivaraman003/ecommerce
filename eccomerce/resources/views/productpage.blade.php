@@ -20,6 +20,32 @@
  
     }
 
+    .category-menu li {
+        list-style: none;
+    }
+
+    .category-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        text-decoration: none;
+        color: #333;
+        background: #f8f9fa;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .category-link:hover {
+        background: #69b6e9;
+        color: #fff;
+        transform: translateX(5px);
+    }
+
+    .category-link i {
+        font-size: 18px;
+    }
+
 
 
     /* .box{
@@ -46,7 +72,15 @@
 
   <div class="container mt-4">
 
-  
+         @if(Auth::check())
+    <div class="d-flex align-items-center gap-3">
+        <h6 class="mb-0 text-dark">Welcome, {{ Auth::user()->name }}</h6>
+        <a href="/logout"
+           class="text-white  btn btn-danger   px-4 py-2 rounded-pill">
+           Logout
+        </a>
+    </div> <br>
+@endif
 
 </div>
 
@@ -55,40 +89,37 @@
 
   <div class="accordion accordion-flush pt-2" id="accordionFlushExample">
 
- @if(Auth::check())
-    <div class="d-flex align-items-center gap-3">
-        <h6 class="mb-0">Welcome, {{ Auth::user()->name }}</h6>
-        <a href="/logout" class="btn btn-danger btn-sm">Logout</a>
-    </div> <br>
-@endif
+
 
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-        Select Product catogery
+        Select Product Catogery
       </button>
     </h2>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
    <div class="accordion-body">
+    <ul class="list-unstyled category-menu">
 
-  <li>
-    <a href="{{ url('/productpage') }}">
-        All Products
-    </a>
-</li>
+        <li class="mb-2">
+            <a href="{{ url('/productpage') }}" class="category-link">
+                <i class="bi bi-grid me-2"></i> All Products
+            </a>
+        </li>
 
-<li>
-    <a href="{{ url('/productpage?category=Dress') }}">
-        Dress
-    </a>
-</li>
+        <li class="mb-2">
+            <a href="{{ url('/productpage?category=Dress') }}" class="category-link">
+                <i class="bi bi-bag-heart me-2"></i> Dresses
+            </a>
+        </li>
 
-<li>
-    <a href="{{ url('/productpage?category=Shoes') }}">
-        Shoes
-    </a>
-</li>
+        <li>
+            <a href="{{ url('/productpage?category=Shoes') }}" class="category-link">
+                <i class="bi bi-bootstrap me-2"></i> Shoes
+            </a>
+        </li>
 
+    </ul>
 </div>
     </div>
   </div>
@@ -96,35 +127,34 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        Home
+        Back to Home / Cart
       </button>
     </h2>
     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
-        <li>
-    <a href="{{ url('/home') }}">
-        Home
-    </a>
-</li>
+    
 
-<li>
-    <a href="{{ url('/cart') }}">
-        Cart
-    </a>
-</li>
-     </div>
+     <div class="accordion-body">
+    <ul class="list-unstyled category-menu">
+
+        <li class="mb-2">
+            <a href="{{ url('/home') }}" class="category-link">
+                <i class="bi bi-grid me-2"></i> Home
+            </a>
+        </li>
+
+        <li class="mb-2">
+            <a href="{{ url('/cart') }}" class="category-link" id="addToCart">
+                <i class="bi bi-bag-heart me-2"></i> Cart
+            </a>
+        </li>
+
+    </ul>
+</div>
+
     </div>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Placeholder content for this accordion, .</div>
-    </div>
-  </div>
+
+ 
 </div>
     <img src="products-images/sales2.jpg"  height="520px" alt="">
     </div>
@@ -169,15 +199,16 @@
             </h5>
 
             <p class="card-text">
-                {{ $product->category }}
+               $ {{ $product->price }}
             </p>
 
-          <div><button><a href="{{ url('/innerproduct/' . $product->id) }}"
-   class="btn ">
+          <div>
+            <a href="{{ url('/innerproduct/' . $product->id) }}"
+   class="btn btn-primary ">
 
     View Product
 
-</a></button>
+</a>
 
 
 </div>
@@ -201,6 +232,27 @@
 
   </div>
 </div>
+<script>
+
+document.getElementById("addToCart")
+.addEventListener("click", function(event){
+
+    // USER LOGIN CHECK
+    let isLoggedIn = "{{ Auth::check() }}";
+
+    // NOT LOGGED IN
+    if(isLoggedIn != 1)
+    {
+        event.preventDefault();
+
+        alert("Please login first");
+
+        window.location.href = "/login";
+    }
+
+});
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

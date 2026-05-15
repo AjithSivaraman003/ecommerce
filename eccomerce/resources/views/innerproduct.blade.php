@@ -50,52 +50,59 @@
     </head>
 <body>
 
-<!-- <section class="container sproduct my-5 pt-5">
-<div class="row mt-5">
-    <div class="col-lg-5 col-md-12 col-12">
-        <img class="img-fluid w-100 pb-1" src="{{ asset('storage/innerpro-img/shirt1.jpg') }}" id="MainImg" alt="">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow position-sticky top-0 w-100">
+  <div class="container">
 
-        <div class="small-img-group">
-            <div class="small-img-col">
-                <img src="{{ asset('storage/innerpro-img/shirt1.jpg') }}" width="100" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-                <img src="{{ asset('storage/innerpro-img/shirt2.jpg') }}" width="100" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-                <img src="{{ asset('storage/innerpro-img/shirt3.jpg') }}" width="100" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-                <img src="{{ asset('storage/innerpro-img/shirt4.jpg') }}" width="100" class="small-img" alt="">
-            </div>
-        </div>
+    <a class="navbar-brand fs-4" href="#">
+      <h3 class="logo text-white mb-0">HEY DUDE</h3>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
+        
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="/home">Home</a>
+        </li>
+
+        <li class="nav-item mx-2" id="addToCart">
+          <a class="nav-link text-white" href="/cart">Cart</a>
+        </li>
+
+
+        <li class="nav-item mx-2">
+          <a class="nav-link text-white" href="/productpage">Product</a>
+        </li>
+
+      </ul>
+
+      <!-- Login -->
+      <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+
+        <i class="fa-solid fa-cart-arrow-down fa-2x text-white"></i>
+
+         @if(Auth::check())
+    <div class="d-flex align-items-center gap-3">
+        <h6 class="mb-0 text-white">Welcome, {{ Auth::user()->name }}</h6>
+        <a href="/logout"
+           class="text-white  btn btn-danger   px-4 py-2 rounded-pill">
+           Logout
+        </a>
+    </div> <br>
+@endif
+
+        
+     
+
+      </div>
+
     </div>
-
-
-    <div class="col-lg-6 col-md-12 col-12">
-        <h6>Home / Shirt</h6>
-        <h3 class="my-3">Mens Fashion Tshirt</h3>
-        <h2>$200.00</h2>
-        <select class="my-3">
-            <option >select size</option>
-            <option >XL</option>
-            <option >Medium</option>
-            <option >Small</option>
-            <input type="number" value="1">
-            <button class="buy-btn">Add to cart</button>
-            <h4 class="mt-5 mb-5">Product Details </h4>
-            <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                 diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor
-                 sit amet, consectetuer adipiscing elit, sed diam nonummy
-                  nibh euismod tincidunt ut laoreet.</span>
-
-        </select>
-    </div>
-
-    
-</div>
-
-</section> -->
+  </div>
+</nav>
 
 
 <section class="container sproduct my-5 pt-5">
@@ -134,11 +141,8 @@
 
         <select class="my-3 form-select w-50">
 
-            <option>Select Size</option>
-
-            <option>
-                <!-- {{ $product->size }} -->
-                <option >XL</option>
+            <option>Select Size</option>            
+            <option >XL</option>
             <option >Medium</option>
             <option >Small</option>
             </option>
@@ -155,7 +159,7 @@
                value="1"
                class="form-control w-25 mb-3">
 
-        <button  type="submit" class="buy-btn btn btn-primary">
+        <button  type="submit" id="addToCartBtn" class="buy-btn btn btn-primary">
             Add to cart
         </button>
 
@@ -194,6 +198,52 @@
         MainImg.src = smallimg[3].src;
     }
 </script>
+
+<script>
+
+document.getElementById("addToCartBtn")
+.addEventListener("click", function(event){
+
+    // USER LOGIN CHECK
+    let isLoggedIn = "{{ Auth::check() }}";
+
+    // NOT LOGGED IN
+    if(isLoggedIn != 1)
+    {
+        event.preventDefault();
+
+        alert("Please login first");
+
+        window.location.href = "/login";
+    }
+
+});
+
+</script>
+
+<script>
+
+document.getElementById("addToCart")
+.addEventListener("click", function(event){
+
+    // USER LOGIN CHECK
+    let isLoggedIn = "{{ Auth::check() }}";
+
+    // NOT LOGGED IN
+    if(isLoggedIn != 1)
+    {
+        event.preventDefault();
+
+        alert("Please login first");
+
+        window.location.href = "/login";
+    }
+
+});
+
+</script>
+
+
 
 
 

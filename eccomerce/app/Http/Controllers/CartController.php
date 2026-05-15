@@ -120,4 +120,11 @@ public function index()
         compact('carts', 'grandTotal'));
 }
 
+public function delete($id)
+{
+    Cart::find($id)->delete();
+
+    return redirect()->back();
+}
+
 }

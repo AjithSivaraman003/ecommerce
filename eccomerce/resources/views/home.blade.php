@@ -33,16 +33,14 @@
     <div class="collapse navbar-collapse" id="navbarNav">
        <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active text-dark" aria-current="page" href="#"><b>Home</b></a>
           </li>
           <li class="nav-item mx-2">
-            <a class="nav-link " href="/cart">Cart</a>
+            <a class="nav-link text-dark" id="addToCart" href="/cart"><b>Cart</b></a>
           </li>
+          
            <li class="nav-item mx-2">
-            <a class="nav-link" href="#">Service</a>
-          </li>
-           <li class="nav-item mx-2">
-            <a class="nav-link" href="/productpage">Product</a>
+            <a class="nav-link text-dark" href="/productpage"><b>Product</b></a>
           </li>
           </ul>
           <!--login-->
@@ -82,9 +80,10 @@
       <p></p>
     </div>
     <div class="col-12 col-md-6 text-white text-start htext">
-     <h2>Best <br> Sellers.</h2>
-     <p class="text-start">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-      sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+     <h2>Fashion <br> Starts Here.</h2>
+     <p class="text-start bg-dark text-white p-3 rounded">
+      Shop stylish footwear and beautiful dresses designed for every occasion.
+Experience the perfect blend of comfort, elegance, and modern fashion.</p>
     </div>
   </div>
 </div>
@@ -106,11 +105,13 @@
   
   <div class="contentbox d-flex flex-column align-items-center text-center">
     
-    <h2 class="mb-2 mt-3">Text</h2>
-    <p class="mb-3">para</p><br>
+    <h2 class="mb-2 mt-3">Nordic Winter Wool Sweater</h2>
+    <p class="mb-3">Soft premium wool sweater with Scandinavian knit patterns. <br>
+Perfect for winter fashion and casual wear.</p><br>
 
     <img src="{{ asset('storage/home-image/dress2.jpg') }}" class="img-fluid mb-3" style="max-width:80%;" alt="">
-     <h4 class="mb-3">$ 100</h4><br>
+     <h4 class="mb-3">★★★★☆ (4.8 Reviews)</h4><br>
+      
 
   
     <a href="{{ url('/productpage?category=Dress') }}"
@@ -133,11 +134,11 @@
   
   <div class="contentbox d-flex flex-column align-items-center text-center">
     
-    <h2 class="mb-2 mt-3">Text</h2>
-    <p class="mb-3">para</p><br>
+    <h2 class="mb-2 mt-3">Urban Street Sneakers</h2>
+    <p class="mb-3">Designed for style and comfort with a lightweight fit <br> perfect for daily adventures.</p><br>
 
     <img src="{{ asset('storage/products-images/dress4.jpg') }}" class="img-fluid mb-3" style="max-width:80%;" alt="">
-     <h4 class="mb-3">$ 1000</h4><br>
+     <h4 class="mb-3">★★★★☆ (4.7 Reviews)</h4><br>
 
    <a href="{{ url('/productpage?category=shoes') }}"
    class="btn btn-primary text-white w-25 text-decoration-none">
@@ -156,8 +157,29 @@
 </div>
 <!--section3-->
 
- 
 
+ 
+<script>
+
+document.getElementById("addToCart")
+.addEventListener("click", function(event){
+
+    // USER LOGIN CHECK
+    let isLoggedIn = "{{ Auth::check() }}";
+
+    // NOT LOGGED IN
+    if(isLoggedIn != 1)
+    {
+        event.preventDefault();
+
+        alert("Please login first");
+
+        window.location.href = "/login";
+    }
+
+});
+
+</script>
 
 
 

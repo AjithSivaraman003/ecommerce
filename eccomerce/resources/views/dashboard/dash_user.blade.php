@@ -11,31 +11,29 @@
 
 </head>
 <body>
-   <!--sidebar-->
+    <!--sidebar-->
     <div class="sidebar">
         <nav class="nav flex-column">
-            <a class="nav-link" href="/dash-product">
+            <a class="nav-link" href="#">
                 <span class="icon">
                         <i class="bi bi-grid"></i>
                 </span>
-                <span class="description">Dashboard</span>
+                <span class="description">Dashbo</span>
             </a>
-            <a class="nav-link" href="/users-list">
+            <a class="nav-link" href="#">
                 <span class="icon">
                     <i class="bi bi-clipboard-check"></i>
                 </span>
-                <span class="description">User list</span>
+                <span class="description">Posts</span>
             </a>
             <a class="nav-link" href="#">
                 <span class="icon">
                     <i class="bi bi-bell"></i>
                 </span>
-                <!-- <span class="description">Notification</span> -->
-                 <span class="description" type="button" onclick="logout()">Logout</span>
+                <span class="description">Notification</span>
             </a>
-               
-            
-             <!-- <a class="nav-link" href="#" data-bs-toggle="collapse"
+                <!--menu  with dropdown-->
+             <a class="nav-link" href="#" data-bs-toggle="collapse"
              data-bs-target="#submenu" aria-expanded="false"
              area-controls="submenu">
                 <span class="icon">
@@ -43,8 +41,7 @@
                 </span>
                 <span class="description">Gallery <i class="bi bi-caret-down-fill"></i></span>
             </a>   
-            
-
+            <!--sub menu  dropdown-->
                 <div class="sub-menu collapse" id="submenu"> 
              <a class="nav-link" href="#">
                 <span class="icon">
@@ -58,15 +55,14 @@
                 </span>
                 <span class="description">Gallery List</span>
             </a>
-           -->
-            
+          
             </div>
             <!---------->
             <a class="nav-link" href="#">
                 <span class="icon">
                     <i class="bi bi-gear"></i>
                 </span>
-                 <span class="description" type="button" onclick="logout()">Logout</span>
+                <span class="description" type="button" onclick="logout()">Logout</span>
             </a>
         </nav>
     </div>
@@ -171,7 +167,6 @@
 
 
 
-
 <script>
 
 function logout() {
@@ -182,6 +177,7 @@ function logout() {
 }
 
 </script>
+
 
 
 

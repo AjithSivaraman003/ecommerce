@@ -5,7 +5,7 @@ use App\Models\Casual;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
-
+use App\Models\User;
 
 Route::get('/', function () {
     return view ('welcome');
@@ -51,14 +51,17 @@ Route::get('/cart',
 
 
 
+Route::get('/users-list',
+    [ProductController::class, 'users']);
 
+Route::get('/user-edit/{id}',
+    [ProductController::class, 'editUser']);
 
+Route::get('/user-delete/{id}',
+    [ProductController::class, 'deleteUser']);
 
-
-
-
-
-
+    Route::get('/cart-delete/{id}',
+    [CartController::class, 'delete']);
 
 
 
@@ -89,3 +92,9 @@ Route::post('/login-check',
 
 Route::get('/logout',
     [AuthController::class, 'logout']);
+
+
+    //admin login 
+Route::get('/admin', function () {
+    return view ('admin');
+});

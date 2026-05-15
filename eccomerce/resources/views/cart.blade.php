@@ -95,6 +95,26 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.m
                            
 
                         </div>
+                         <!-- ACTION -->
+                <div class="col-md-3 mt-4 mt-md-0 text-center">
+
+                    <p class="fw-bold mb-3">
+                        Action
+                    </p>
+
+                    <!-- DELETE BUTTON -->
+                    <a href="{{ url('/cart-delete/' . $cart->id) }}"
+                       class="btn btn-danger rounded-pill px-4"
+                       onclick="return confirm('Remove this item from cart?')">
+
+                        <i class="bi bi-trash"></i>
+
+                        Delete
+
+                    </a>
+
+                </div>
+                    <!-- delet end -->
 
                     </div>
 
